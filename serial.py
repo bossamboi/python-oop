@@ -19,19 +19,18 @@ class SerialGenerator:
     """
     def __init__(self, start):
         """Initializes instance of SerialGenerator class with counting capabilities."""
-        self.counter = start-1
-        self.start = start
+        self.next_serial = self.start = start
 
     def __repr__(self):
-        return f"<SerialGenerator start = {self.start} counter = {self.counter}>"
+        return f"<SerialGenerator start = {self.start} next_serial = {self.next_serial}>"
 
     def generate(self):
-        """Increments the instance's counter by 1, and returns count value."""
-        self.counter+=1
-        return self.counter
+        """Increments the instance's next_serial by 1, and returns count value."""
+        self.next_serial+=1
+        return self.next_serial-1
 
     def reset(self):
-        """Resets the instance's counter to starting value. Returns None"""
-        self.counter = self.start-1
+        """Resets the instance's next_serial to starting value. Returns None"""
+        self.next_serial = self.start
 
 serial = SerialGenerator(start=100)
