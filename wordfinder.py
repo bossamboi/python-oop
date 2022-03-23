@@ -30,10 +30,12 @@ class SpecialWordFinder(WordFinder):
     """DOCSTRING"""
 
     def __init__(self, filepath):
+        """Instantiates a special word finder that cleans up list of words"""
         super().__init__(filepath)
         self.wordlist = self.refine_list()
 
     def refine_list(self):
+        """Takes wordlist and strips empty lines and comments"""
         # ['# Veggies', '', 'kale', 'parsnips', '', '# Fruits', etc]
         new_word_list = [word for word in self.wordlist if word]
         new_word_list = [word for word in new_word_list if not word.startswith('#')]
