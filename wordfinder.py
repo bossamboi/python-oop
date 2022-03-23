@@ -27,7 +27,7 @@ wf = WordFinder('words.txt')
 
 
 class SpecialWordFinder(WordFinder):
-    """DOCSTRING"""
+    """Special Word Finder: finds random words from a dictionary with empty lines and comments"""
 
     def __init__(self, filepath):
         """Instantiates a special word finder that cleans up list of words"""
@@ -35,8 +35,14 @@ class SpecialWordFinder(WordFinder):
         self.wordlist = self.refine_list()
 
     def refine_list(self):
-        """Takes wordlist and strips empty lines and comments"""
-        # ['# Veggies', '', 'kale', 'parsnips', '', '# Fruits', etc]
+        """
+        Takes wordlist and strips empty lines and comments
+
+        ['# Veggies', '', 'kale', 'parsnips', '', '# Fruits', etc]
+        turns into
+        ['kale', 'parsnips', etc]
+        """
+
         new_word_list = [word for word in self.wordlist if word]
         new_word_list = [word for word in new_word_list if not word.startswith('#')]
         return new_word_list
