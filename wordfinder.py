@@ -15,7 +15,7 @@ class WordFinder:
     def get_wordlist(self):
         """Takes file of words and returns words in a list"""
         wordfile = open(self.filepath)
-        wordlist = [line.replace('\n', '') for line in wordfile]
+        wordlist = [line.strip() for line in wordfile]
         return wordlist
     
     def random(self):
@@ -41,6 +41,7 @@ class SpecialWordFinder(WordFinder):
         ['# Veggies', '', 'kale', 'parsnips', '', '# Fruits', etc]
         turns into
         ['kale', 'parsnips', etc]
+        
         """
 
         new_word_list = [word for word in self.wordlist if word]
